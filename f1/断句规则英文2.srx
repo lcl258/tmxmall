@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<srx xmlns="http://www.lisa.org/srx20" version="2.0">
+	<header></header>
+	<body>
+		<languagerules>
+			<languagerule languagerulename="common">
+                <rule break="no" name="abbr">
+                    <beforebreak>(\b|\p{Z})[\p{Cc}\p{Cf}\p{Co}\p{Cn}]*(\Qapprox.\E|\QApprox.\E|\QBrig.\E|\Qc. f.\E|\Qca.\E|\QCa.\E|\QCapt.\E|\Qcf.\E|\QCmnd.\E|\QCo.\E|\Qcol.\E|\QCol.\E|\QDept.\E|\Qe. g.\E|\Qe.g.\E|\Qed.\E|\QEd.\E|\Qeg.\E|\QEg.\E|\Qexcl.\E|\QExcl.\E|\Qfax.\E|\QFax.\E|\Qfig.\E|\QFig.\E|\Qfigs.\E|\QFigs.\E|\QGen.\E|\Qgovt.\E|\QGovt.\E|\QHon.\E|\Qi. e.\E|\Qi.e.\E|\Qie.\E|\QIe.\E|\Qincl.\E|\QIncl.\E|\QIng.\E|\QJUDr.\E|\QLt.\E|\QMaj.\E|\Qmax.\E|\QMessrs.\E|\QMgr.\E|\Qmil.\E|\Qmin.\E|\QMr.\E|\QMrs.\E|\QMs.\E|\Qno.\E|\QNo.\E|\Qp.\E|\QP.\E|\Qpar.\E|\QPar.\E|\Qpp.\E|\QPres.\E|\QProf.\E|\Qreg.\E|\QReg.\E|\QRep.\E|\QRev.\E|\QRevd.\E|\Qroz.\E|\Qsec.\E|\QSec.\E|\QSen.\E|\QSgt.\E|\QSt.\E|\Qsubsec.\E|\QSubsec.\E|\Qtel.\E|\QTel.\E|\Qviz.\E|\QViz.\E|\Qvol.\E|\QVol.\E|\Qvols.\E|\QVols.\E|\QDr.\E)</beforebreak>
+                    <afterbreak>[\p{Cc}\p{Cf}\p{Co}\p{Cn}]*[\p{Z}]+[\p{Cc}\p{Cf}\p{Co}\p{Cn}]*(¡|¿|\p{Lu}|\p{S}|\p{N})</afterbreak>
+                </rule>
+                <rule break="no" name="abbrNum">
+                    <beforebreak>(\b|\p{Z})[\p{Cc}\p{Cf}\p{Co}\p{Cn}]*(\QApr.\E|\QAug.\E|\QDec.\E|\Qest.\E|\QEst.\E|\QFeb.\E|\QJan.\E|\QMar.\E|\QNov.\E|\QOct.\E|\QSept.\E)</beforebreak>
+                    <afterbreak>[\p{Cc}\p{Cf}\p{Co}\p{Cn}]*[\p{Z}]+[\p{Cc}\p{Cf}\p{Co}\p{Cn}]*[\p{N}]</afterbreak>
+                </rule>
+
+				<!-- common -->
+
+			    <rule break="no">
+				    <beforebreak>['\"(\p{Z}\s][\p{Cc}\p{Cf}\p{Co}\p{Cn}]*\p{Lu}\.</beforebreak>
+				    <afterbreak>[\p{Cc}\p{Cf}\p{Co}\p{Cn}]*[\p{Z}\s]+[\p{Cc}\p{Cf}\p{Co}\p{Cn}]*\p{Lu}</afterbreak>
+			    </rule>
+
+			    <!-- whitespace, number, dot, whitespace, number -->
+			    <rule break="no">
+				    <beforebreak>(\b|\p{Z}\s)[\p{Cc}\p{Cf}\p{Co}\p{Cn}]*[\p{N}]+\.</beforebreak>
+				    <afterbreak>[\p{Cc}\p{Cf}\p{Co}\p{Cn}]*[\p{Z}\s]+[\p{Cc}\p{Cf}\p{Co}\p{Cn}]*[\p{N}]</afterbreak>
+			    </rule>
+
+			    <!-- whitespace, number, dot,  whitespace, number, dot, whitespace, number -->
+			    <rule break="no">
+				    <beforebreak>((\b|\p{Z}\s)[\p{Cc}\p{Cf}\p{Co}\p{Cn}]*[\p{N}]+\.){2}</beforebreak>
+				    <afterbreak>[\p{Cc}\p{Cf}\p{Co}\p{Cn}]*[\p{Z}\s]+[\p{Cc}\p{Cf}\p{Co}\p{Cn}]*[\p{N}]</afterbreak>
+			    </rule>
+
+
+			    <!-- break rules -->
+
+			    <rule break="yes">
+				    <beforebreak>[\t\n\u2029\u200B]</beforebreak>
+					<afterbreak></afterbreak>
+			    </rule>
+
+			    <rule break="yes" name="segEnd">
+				    <beforebreak>(\.|\?|\!)[\p{Cc}\p{Cf}\p{Co}\p{Cn}]*</beforebreak>
+				    <afterbreak>[\p{Z}\s]+[\p{Z}\s\p{Cc}\p{Cf}\p{Co}\p{Cn}]*(\p{Lu}|\p{N})</afterbreak>
+			    </rule>
+
+			    <rule break="yes" name="leftBrkt">
+				   <beforebreak>(\.|\?|\!)[\p{Cc}\p{Cf}\p{Co}\p{Cn}]*</beforebreak>
+				   <afterbreak>[\p{Z}\s]+[\p{Z}\s\p{Cc}\p{Cf}\p{Co}\p{Cn}]*(\(|'|"|„|‚|“|‘|«)[\p{Z}\s\p{Cc}\p{Cf}\p{Co}\p{Cn}]*[\p{Lu}\p{N}]</afterbreak>
+			    </rule>
+
+			    <rule break="yes" name="rightBrkt">
+				    <beforebreak>(\.|\?|\!)[\p{Z}\s]*(\)|"|'|”|’|»)[\p{Cc}\p{Cf}\p{Co}\p{Cn}]*</beforebreak>
+				    <afterbreak>[\p{Z}\s]+[\p{Z}\s\p{Cc}\p{Cf}\p{Co}\p{Cn}]*(\p{Lu}|\p{N})</afterbreak>
+			    </rule>
+			</languagerule>
+		</languagerules>
+
+		<maprules>
+            <languagemap languagepattern=".*" languagerulename="common"/>
+        </maprules>
+	</body>
+</srx>
