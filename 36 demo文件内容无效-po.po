@@ -1,0 +1,2 @@
+ msgid "Welcome to ADempiere ERP"
+ msgstr ""
